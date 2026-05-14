@@ -1,14 +1,15 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx
+  name: alpine-curl
   namespace: dev
   labels:
-    name: nginx
+    name: alpine-curl
 spec: 
+  serviceAccountName: pod-inspector
   containers:
-    - name: nginx
-      image: nginx:1.27.0
+    - name: curl
+      image: lmacademy/alpine-curl:1.0.0
       resources:
         limits:
           memory: "128Mi"
@@ -26,6 +27,7 @@ metadata:
   labels:
     name: nginx
 spec: 
+  serviceAccountName: pod-inspector
   containers:
     - name: nginx
       image: nginx:1.27.0
